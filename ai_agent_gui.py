@@ -85,9 +85,6 @@ class MessageModel(QAbstractListModel):
         return len(self.messages)
 
     def add_message(self, who, text):
-        """
-        Add a message to our message list, getting the text from the QLineEdit
-        """
         if text:  # Don't add empty strings.
             # Access the list via the model.
             self.messages.append((who, text))
