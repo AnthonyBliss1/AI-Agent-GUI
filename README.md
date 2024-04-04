@@ -14,14 +14,14 @@ This script utilizes 4 Flowise Chatflows; PDF Upsert, DOCX Upsert, WEB Upsert, a
 In Flowise, you can also tweak each node in the flow for more specific use cases or to improve outputs i.e. change LLM model, change embedding model, text splitter config, or adjusting prompts.
 
 > [!IMPORTANT]
-> For your PDF, DOCX, and WEB Upsert flows, click the green upsert button in Flowise (on the right side), select Python, and copy the upsert API URL. 
-  - If you are running Flowise locally, your Upsert URL should look something like this : http://localhost:3000/api/v1/vector/upsert/your-chatflow-ID. To use these API's, run the script, click "Flowise" in the toolbar and paste in your URLs.
+> Only for your PDF, DOCX, and WEB Upsert flows, click the green upsert button in Flowise (on the right side), select Python, and copy the API URL. 
+  - If you are running Flowise locally, your Upsert URL should look something like this : http://localhost:3000/api/v1/vector/upsert/your-chatflow-ID. To use these API's, run the script, click "Flowise" in the toolbar and paste your URLs in the correct sections.
 
 > [!IMPORTANT]
-> Simply click the "</>" icon in Flowise while looking at the Load flow, and copy that URL for Python.
-  - Your Load/Predict URL should look something like this: http://localhost:3000/api/v1/prediction/your-chatflow-ID. 
+> For your Load/Predict URL, simply click the "</>" icon in Flowise while looking at the flow, select Python, and copy the API URL.
+  - Your Load/Predict URL should look something like this: http://localhost:3000/api/v1/prediction/your-chatflow-ID.
 
-To explain, the script has 3 upsert flows; PDF, DOCX, WEB. These calls will upsert your specific document types into your Pinecone index. The Load flow will be required to actually send queries and receive responses (Q&A). We have the load flow so we do not need to store an additional Predict URL for each one of our Upsert flows.
+To explain, the script has 3 upsert flows; PDF, DOCX, WEB. These calls will upsert your specific document types into your Pinecone index. The Load flow will be required to actually send queries and receive responses (Q&A). We have a load flow so we do not need to store an additional Predict URL for each one of our Upsert flows.
 
 ## Pinecone
 After you have Flowise and your flows set up, you should have already set up a Pinecone account and index. Again, a **free** Starter Index will work perfect for this script. While the script is running, click "Pinecone" in the toolbar of the GUI and paste in your Pinecone API Key and index name. Even though your flows are already set up with your Pinecone credentials, this script runs a "delete_all_records" function on close to clear all records from the namespaces created in your Pinecone index. This will make sure you don't go over the 100 namespace limit for the starter index. 
