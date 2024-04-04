@@ -9,7 +9,7 @@ Navigate to Openai.com > API > API Keys > create new secret key. Copy this key a
 ## Flowise
 This script utilizes 4 Flowise Chatflows; PDF Upsert, DOCX Upsert, WEB Upsert, and Load. You will need to setup each of these components before interacting with the chat widgets. Please follow the documentation to setup Flowise [here](https://docs.flowiseai.com/getting-started). You can run Flowise locally or deploy on Render, Railway, AWS etc. but running locally is the best way to get started fast and for free. Once you have Flowise installed, download each of the flow files from this repository's "flows" folder and upload them to Flowise by clicking "Add New" > "Load Chatflow". Now, you will need to configure each flow with your OpenAI and Pinecone credentials. 
 
-*At this point, if you do not have a Pinecone account, navigate [here](https://www.pinecone.io/) to create an account and setup a free Starter Index. **Make sure to set the index dimensions as 1536*** 
+> *At this point, if you do not have a Pinecone account, navigate [here](https://www.pinecone.io/) to create an account and setup a free Starter Index. **Make sure to set the index dimensions as 1536*** 
 
 In Flowise, you can also tweak each node in the flow for more specific use cases or to improve outputs i.e. change LLM model, change embedding model, text splitter config, or adjusting prompts.
 
