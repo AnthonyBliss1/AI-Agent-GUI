@@ -15,11 +15,13 @@ In Flowise, you can also tweak each node in the flow for more specific use cases
 
 > [!IMPORTANT]
 > Only for your PDF, DOCX, and WEB Upsert flows, click the green upsert button in Flowise (on the right side), select Python, and copy the API URL. 
->  - If you are running Flowise locally, your Upsert URL should look something like this : http://localhost:3000/api/v1/vector/upsert/your-chatflow-ID. To use these API's, run the script, click "Flowise" in the toolbar and paste your URLs in the correct sections.
+>  - If you are running Flowise locally, your Upsert URL should look something like this : http://localhost:3000/api/v1/vector/upsert/your-chatflow-ID.
 
 >[!IMPORTANT]
 > For your Load/Predict URL, simply click the "</>" icon in Flowise while looking at the flow, select Python, and copy the API URL.
 >  - Your Load/Predict URL should look something like this: http://localhost:3000/api/v1/prediction/your-chatflow-ID.
+
+**To use these API's, run the script, click "Flowise" in the toolbar and paste your URLs in the correct sections.**
 
 To explain, the script has 3 upsert flows; PDF, DOCX, WEB. These calls will upsert your specific document types into your Pinecone index. The Load flow will be required to actually send queries and receive responses (Q&A). We have a load flow so we do not need to store an additional Predict URL for each one of our Upsert flows.
 
