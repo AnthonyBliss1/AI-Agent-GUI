@@ -11,6 +11,7 @@ This script utilizes 4 Flowise Chatflows; PDF Upsert, DOCX Upsert, WEB Upsert, a
 
 > *At this point, if you do not have a Pinecone account, navigate [here](https://www.pinecone.io/) to create an account and setup a free Starter Index. **Make sure to set the index dimensions as 1536*** 
 
+
 In Flowise, you can also tweak each node in the flow for more specific use cases or to improve outputs i.e. change LLM model, change embedding model, text splitter config, or adjusting prompts.
 
 **THE MOST IMPORTANT PART** For your PDF, DOCX, and WEB Upsert flows, click the green upsert button in Flowise (on the right side), select Python, and copy the upsert API URL. 
