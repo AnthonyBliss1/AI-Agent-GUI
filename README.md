@@ -4,14 +4,14 @@ This project is a very simple Python GUI wrapped around a Langchain Pandas Dataf
 # Setup
 
 ## Open AI 
-Navigate to Openai.com > API > API Keys > create new secret key. Copy this key and paste it into the .env file next to "OPENAI_API_KEY". You will be prompted to update the .env file before running the .py file. 
+Create an OpenAI Account or if you already have one, navigate to Openai.com > API > API Keys > Create New Secret Key. Copy this key and paste it into the .env file next to "OPENAI_API_KEY". You will be prompted to update the .env file before running the .py file. 
 
 ## Flowise
-This script utilizes 4 Flowise Chatflows; PDF Upsert, DOCX Upsert, WEB Upsert, and Load. You will need to setup each of these components before interacting with the chat widgets. Please follow the documentation to setup Flowise [here](https://docs.flowiseai.com/getting-started). You can run Flowise locally or deploy on Render, Railway, AWS etc. but running locally is the best way to get started fast and for free. Once you have Flowise installed, download each of the flow files from this repository's "flows" folder and upload them to Flowise by clicking "Add New" > "Load Chatflow". Now, you will need to configure each flow with your OpenAI and Pinecone credentials. 
+This script utilizes 4 Flowise Chatflows; PDF Upsert, DOCX Upsert, WEB Upsert, and Load. You will need to setup each of these components before interacting with the document chat widgets. Please follow the documentation to setup Flowise [here](https://docs.flowiseai.com/getting-started). You can run Flowise locally or deploy on Render, Railway, AWS etc. but running locally is the best way to get started fast and for free. Once you have Flowise installed, download each of the flow files from this repository's "flows" folder and upload them to Flowise by clicking "Add New" > "Load Chatflow". Now, you will need to configure each flow with your OpenAI and Pinecone credentials. 
 
 > *At this point, if you do not have a Pinecone account, navigate [here](https://www.pinecone.io/) to create an account and setup a free Starter Index. **Make sure to set the index dimensions as 1536*** 
 
-In Flowise, you can also tweak each node in the flow for more specific use cases or to improve outputs i.e. change LLM model, change embedding model, text splitter config, or adjusting prompts.
+In Flowise, you can tweak each node's inputs on the flow page for more specific use cases or to improve outputs i.e. change LLM model, change embedding model, text splitter config, or adjusting prompts.
 
 > [!IMPORTANT]
 > Only for your PDF, DOCX, and WEB Upsert flows, click the green upsert button in Flowise (on the right side), select Python, and copy the API URL. 
