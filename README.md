@@ -19,7 +19,7 @@ In Flowise, you can also tweak each node in the flow for more specific use cases
 
 >[!IMPORTANT]
 > For your Load/Predict URL, simply click the "</>" icon in Flowise while looking at the flow, select Python, and copy the API URL.
->  - Your Load/Predict URL should look something like this: http://localhost:3000/api/v1/prediction/your-chatflow-ID.
+>  - If you are running Flowise locally, your Load/Predict URL should look something like this: http://localhost:3000/api/v1/prediction/your-chatflow-ID.
 
 **To use these API's, run the script, click "Flowise" in the toolbar and paste your URLs in the correct sections.**
 
