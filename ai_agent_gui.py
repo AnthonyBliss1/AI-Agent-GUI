@@ -487,11 +487,11 @@ class MainWindow(QMainWindow):
 
         side_menu_layout = QVBoxLayout()
         side_menu_layout.setAlignment(Qt.AlignTop)
-        side_menu_layout.setContentsMargins(0,13,0,0)
+        side_menu_layout.setContentsMargins(0,12,0,0)
 
         # Create side menu
         self.side_menu = QListWidget()
-        self.side_menu.setFixedSize(90, 358)
+        self.side_menu.setFixedSize(90, 365)
         self.side_menu.addItem("PANDAS UI")
         self.side_menu.addItem("PDF CHAT")
         self.side_menu.addItem("DOCX CHAT")
