@@ -550,12 +550,12 @@ class MainWindow(QMainWindow):
         pinecone_api_key = os.getenv("PINECONE_API_KEY")
         pinecone_index_name = os.getenv("PINECONE_INDEX_NAME")
 
-        if not api_key:
-            QMessageBox.information(self, "Update .env file", "OpenAI API Key Not Found! Please Update .env File")
-            sys.exit()  
+        if api_key:
+            # Initialize language model for agent
+            self.llm = ChatOpenAI(model_name="gpt-3.5-turbo-0125", temperature=0, openai_api_key=api_key)
 
-        # Initialize language model for agent
-        self.llm = ChatOpenAI(model_name="gpt-3.5-turbo-0125", temperature=0, openai_api_key=api_key)
+        else:
+            self.model.add_message(USER_THEM, "OpenAI API Key Not Found! Please Update in OpenAI Toolbar")
 
         self.df = None
 
@@ -771,6 +771,13 @@ class MainWindow(QMainWindow):
                 for key, value in os.environ.items():
                     f.write(f"{key}={value}\n")
 
+            if api_key:
+                # Initialize language model for agent
+                self.llm = ChatOpenAI(model_name="gpt-3.5-turbo-0125", temperature=0, openai_api_key=api_key)
+
+            else:
+                self.model.add_message(USER_THEM, "OpenAI API Key Not Found! Please Update in OpenAI Toolbar")
+
             QMessageBox.information(self, "Configuration Saved", "Configuration saved successfully!")
 
     def closeEvent(self, event):
@@ -800,9 +807,9 @@ class MainWindow(QMainWindow):
                 if self.web_chat_widget.namespace_id:
                     index.delete(delete_all=True, namespace=self.web_chat_widget.namespace_id)
 
-                print("Pinecone records deleted successfully.")
+                print("Pinecone namespaces deleted successfully.")
             except Exception as e:
-                print(f"Error deleting Pinecone records: {str(e)}")
+                print(f"Error deleting Pinecone namespaces: {str(e)}")
         else:
             print("Pinecone API key or index name not found in .env file.")
 
