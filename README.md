@@ -4,7 +4,7 @@ This project is a very simple Python GUI wrapped around a Langchain Pandas Dataf
 # Setup
 
 ## Open AI 
-Create an OpenAI Account or if you already have one, navigate to Openai.com > API > API Keys > Create New Secret Key. Copy this key and paste it into the .env file next to "OPENAI_API_KEY". You will be prompted to update the .env file before running the .py file. 
+Create an OpenAI Account or if you already have one, navigate to Openai.com > API > API Keys > Create New Secret Key. Copy this key and paste it into the .env file next to "OPENAI_API_KEY". Run the script, click "OpenAI" in the toolbar and paste your API Key in the input field. 
 
 ## Flowise
 This script utilizes 4 Flowise Chatflows; PDF Upsert, DOCX Upsert, WEB Upsert, and Load. You will need to setup each of these components before interacting with the document chat widgets. Please follow the documentation to setup Flowise [here](https://docs.flowiseai.com/getting-started). You can run Flowise locally or deploy on Render, Railway, AWS etc. but running locally is the best way to get started fast and for free. Once you have Flowise installed, download each of the flow files from this repository's "flows" folder and upload them to Flowise by clicking "Add New" > "Load Chatflow". Now, you will need to configure each flow with your OpenAI and Pinecone credentials. 
