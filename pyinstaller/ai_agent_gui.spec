@@ -5,8 +5,8 @@ import sys ; sys.setrecursionlimit(sys.getrecursionlimit() * 5)
 a = Analysis(
     ['ai_agent_gui.py'],
     pathex=[],
-    binaries=[('/Users/anthonybliss/anaconda3/lib/libpython3.11.dylib', '.')],
-    datas=[('ai_agent.png', '.')],
+    binaries=[('your/path/to/python/lib', '.')],
+    datas=[],
     hiddenimports=['PySide6', 'PySide6.QtWidgets', 'PySide6.QtCore', 'PySide6.QtGui', 'langchain_experimental.agents.agent_toolkit', 'langchain_openai', 'langchain.agents.agent_types', 'pandas', 'pinecone', 'dotenv', 'requests', 'os', 'uuid', 'sys', 'matplotlib', 'tabulate'],
     hookspath=["."],
     hooksconfig={},
@@ -46,6 +46,5 @@ coll = COLLECT(
 app = BUNDLE(
     coll,
     name='ai_agent_gui.app',
-    icon='ai_agent.icns',
     bundle_identifier=None,
 )
