@@ -1,7 +1,7 @@
 # AI Agent GUI
 This project is a very simple Python GUI wrapped around a Langchain Pandas Dataframe Agent and Flowise APIs. With the Pandas DF Agent we use natural language to interact with Pandas dataframes. Through Flowise, we can create RAG Chatbots to interact with documents or even webpages. The script is meant to be configurable so any user can utilize these powerful tools.
 
-If you want to use a packaged version of this script, you can get a download link [here](https://arb.lemonsqueezy.com/checkout). Unfortunately, there is only a packaged version for Apple Silicon devices. 
+If you want to use a packaged version of this script, you can get a download link [here](https://arb.lemonsqueezy.com/buy/eadd945e-ad92-44c2-aaaa-b49794c381e4). Unfortunately, there is only a packaged version for Apple Silicon devices. 
 
 # Setup
 
