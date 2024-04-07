@@ -1,22 +1,24 @@
 import sys
 from PySide6.QtCore import QAbstractListModel, QMargins, QPoint, Qt, QTimer
-from PySide6.QtGui import QColor, QFontMetrics, QMovie, QIcon, QFont
+from PySide6.QtGui import QColor, QFontMetrics, QIcon, QFont
 from PySide6.QtWidgets import (
     QApplication, QLineEdit, QListView, QMainWindow, QPushButton,
     QVBoxLayout, QHBoxLayout, QWidget, QFileDialog, QStyledItemDelegate, 
-    QListWidget, QStackedWidget, QLabel, QFormLayout, QDialogButtonBox, 
+    QListWidget, QStackedWidget, QLabel, QDialogButtonBox, 
     QDialog, QMessageBox
 )
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain_openai import ChatOpenAI
 from langchain.agents.agent_types import AgentType
 import pandas as pd
+import matplotlib
 from pinecone import Pinecone
 from dotenv import load_dotenv
 import os
 import requests
 import uuid
 
+matplotlib.use('QT5Agg')
 
 USER_ME = 0
 USER_THEM = 1
@@ -476,10 +478,22 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setWindowTitle("AI AGENT GUI")
-        self.setWindowIcon(QIcon("icon.png"))
+        self.setWindowIcon(QIcon("ai_agent.png"))
 
         # Fixed size for the main window
         self.setFixedSize(800, 530)
+
+        # Create the .env file and directory if they don't exist
+        home_dir = os.path.expanduser('~')
+        env_dir = os.path.join(home_dir, '.ai_agent_gui')
+        self.env_path = os.path.join(env_dir, '.env')
+
+        if not os.path.exists(env_dir):
+            os.makedirs(env_dir)
+
+        if not os.path.exists(self.env_path):
+            with open(self.env_path, 'w') as f:
+                pass  # Create an empty .env file
 
         central_widget = QWidget(self)
         main_layout = QHBoxLayout(central_widget)
@@ -545,7 +559,7 @@ class MainWindow(QMainWindow):
         agent_layout.addWidget(self.send_button)
 
         # Load credentials
-        load_dotenv()
+        load_dotenv(self.env_path)
         api_key = os.getenv("OPENAI_API_KEY")
         pinecone_api_key = os.getenv("PINECONE_API_KEY")
         pinecone_index_name = os.getenv("PINECONE_INDEX_NAME")
@@ -740,12 +754,17 @@ class MainWindow(QMainWindow):
 
         if dialog.exec() == QDialog.Accepted:
             os.environ = {}
-            with open(".env", "r") as f:
-                for line in f:
-                    if line.strip():
-                        key, value = line.strip().split("=", 1)
-                        os.environ[key] = value
-
+            try:
+                with open(self.env_path, "r") as f:
+                    for line in f:
+                        if line.strip():
+                            key, value = line.strip().split("=", 1)
+                            os.environ[key] = value
+            except FileNotFoundError:
+                # If the .env file doesn't exist, create an empty one
+                with open(self.env_path, "w") as f:
+                    pass
+                
             if config_type == "OpenAI":
                 api_key = api_key_input.text()
                 os.environ["OPENAI_API_KEY"] = api_key
@@ -767,7 +786,7 @@ class MainWindow(QMainWindow):
                 os.environ["PINECONE_INDEX_NAME"] = index_name
 
             # Write the updated environment variables back to the .env file
-            with open(".env", "w") as f:
+            with open(self.env_path, "w") as f:
                 for key, value in os.environ.items():
                     f.write(f"{key}={value}\n")
 
@@ -786,7 +805,7 @@ class MainWindow(QMainWindow):
         event.accept()
 
     def delete_pinecone_records(self):
-        load_dotenv()
+        load_dotenv(self.env_path)
         api_key = os.getenv("PINECONE_API_KEY")
         index_name = os.getenv("PINECONE_INDEX_NAME")
 
