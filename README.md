@@ -5,7 +5,7 @@ If you want to use a packaged version of this script, you can get a download lin
 
 # Setup
 
-## Open AI 
+## OpenAI 
 Create an OpenAI Account or if you already have one, navigate to Openai.com > API > API Keys > Create New Secret Key. Copy the newly created key, run the script, click "OpenAI" in the toolbar, and paste your API Key in the input field. 
 
 ## Flowise
