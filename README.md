@@ -31,7 +31,7 @@ To explain, the script has 3 upsert flows; PDF, DOCX, WEB. These calls will upse
 After you have Flowise and your flows set up, you should have already set up a Pinecone account and index. Again, a **free** Starter Index will work fine for this script. While the script is running, click "Pinecone" in the toolbar of the GUI and paste in your Pinecone API Key and index name. Even though your flows are already set up with your Pinecone credentials, this script runs a "delete_all_records" function on close to clear all records from the namespaces created in your Pinecone index. This will make sure you don't go over the 100 namespace limit for the Starter Index. 
 
 > [!NOTE]
-> The Pinecone Starter Index is hosted in the us-central-1 (Iowa) region of the GCP cloud. If your location is far enough, there may be some latency after upsert confimation from the script before your Load flow will be able to search the namespace. You can upgrade to an S1 pod for better performance. More information on indexes can be found [here](https://docs.pinecone.io/guides/indexes/understanding-indexes). More information on index limits can be found [here](https://docs.pinecone.io/reference/limits#retention)
+> The Pinecone Starter Index is hosted in the us-central-1 (Iowa) region of the GCP cloud. If your location is far enough, there may be some latency after upsert confimation from the script before your Load flow will be able to search the namespace. You can upgrade to an S1 pod for better performance. More information on indexes can be found [here](https://docs.pinecone.io/guides/indexes/understanding-indexes). More information on index limits can be found [here](https://docs.pinecone.io/reference/limits#retention).
 
 ## Have Fun!
 
